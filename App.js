@@ -5,6 +5,7 @@ export default function App() {
   return (
     <View>
       <Text style={{fontFamily:'Metropolis-Bold',fontSize:90}}>App</Text>
+      
     </View>
   )
 }
