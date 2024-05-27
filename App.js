@@ -1,11 +1,20 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Signup from './App/Container/Signup/Signup';
+import Login from './App/Container/Login/Login';
+import Forgot from './App/Container/Forgot/Forgot';
+
 
 export default function App() {
   return (
-    <View>
-      <Text style={{fontFamily:'Metropolis-Bold',fontSize:90}}>App</Text>
-      
-    </View>
+    <>
+      {/* <Text style={{fontFamily:'Metropolis-Light',fontSize:90}}>App</Text>
+      <FontAwesome name="facebook-square" size={50} color="red"/> */}
+   
+    {/* <Signup/> */}
+    {/* <Login/> */}
+    <Forgot/>
+    </>
   )
 }
