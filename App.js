@@ -4,6 +4,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Signup from './App/Container/Signup/Signup';
 import Login from './App/Container/Login/Login';
 import Forgot from './App/Container/Forgot/Forgot';
+import HomePage from './App/Container/HomePage/HomePage';
 
 
 export default function App() {
@@ -14,7 +15,8 @@ export default function App() {
    
     {/* <Signup/> */}
     {/* <Login/> */}
-    <Forgot/>
+    {/* <Forgot/> */}
+    <HomePage/>
     </>
   )
 }

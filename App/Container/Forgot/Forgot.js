@@ -21,6 +21,7 @@ export default function Forgot() {
                 />
 
             </View>
+            
             <TouchableOpacity style={styles.button}>
                 <Text style={{ fontSize: 17, color: 'white' }}>SEND</Text>
             </TouchableOpacity>
@@ -59,21 +60,20 @@ const styles = StyleSheet.create({
         width: 350,
         height: 55,
         backgroundColor: '#DB3022',
-        margin: 9,
-        padding: 15,
         color: 'white',
         borderRadius: 50,
         alignItems: 'center',
         elevation: 2,
-marginTop:40
+        marginTop: 40,
+        justifyContent:'center'
     },
-    
+
     text: {
         color: 'black',
-        paddingTop:40,
-        paddingBottom:15,
-        lineHeight:20
+        paddingTop: 40,
+        paddingBottom: 15,
+        lineHeight: 20
     },
-    
-   
+
+
 })

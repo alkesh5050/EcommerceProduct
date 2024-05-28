@@ -76,12 +76,11 @@ const styles = StyleSheet.create({
         width: 350,
         height: 55,
         backgroundColor: '#DB3022',
-        margin: 10,
-        padding: 15,
         color: 'white',
         borderRadius: 50,
         alignItems: 'center',
         elevation: 2,
+        justifyContent:'center'
 
     },
     icon: {
