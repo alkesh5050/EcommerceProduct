@@ -1,6 +1,7 @@
 import { View, Text, StatusBar, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import React from 'react'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { horizontalScale, moderateScale } from '../../../assets/matrix/Metrics';
 export default function Forgot() {
     return (
         <View style={styles.container}>
@@ -23,7 +24,7 @@ export default function Forgot() {
             </View>
             
             <TouchableOpacity style={styles.button}>
-                <Text style={{ fontSize: 17, color: 'white' }}>SEND</Text>
+                <Text style={{ fontSize: moderateScale(17), color: 'white' }}>SEND</Text>
             </TouchableOpacity>
         </View>
     )
@@ -34,16 +35,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        paddingHorizontal: 18,
+        paddingHorizontal: horizontalScale(18),
         backgroundColor: '#F9F9F9',
-        paddingTop: 13
+        paddingTop: horizontalScale(13)
     },
     fonts: {
         color: 'black',
-        fontSize: 40,
+        fontSize: moderateScale(40),
         fontFamily: 'Metropolis-Bold',
-        marginBottom: 40,
-        marginTop: 20
+        marginBottom: horizontalScale(40),
+        marginTop: horizontalScale(20)
     },
     input: {
         height: 60,

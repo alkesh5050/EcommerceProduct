@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, StatusBar, } from 'react-native'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, StatusBar, ScrollView, } from 'react-native'
 import React from 'react'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { horizontalScale, moderateScale, verticalScale } from '../../../assets/matrix/Metrics'
 
 export default function Signup() {
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <StatusBar
                 animated={true}
                 backgroundColor="#61dafb"
@@ -39,7 +40,7 @@ export default function Signup() {
                 <FontAwesome name="long-arrow-right" size={17} color="red" />
             </View>
             <TouchableOpacity style={styles.button}>
-                <Text style={{fontSize:17,color:'white'}}>SIGN UP</Text>
+                <Text style={{fontSize:moderateScale(17),color:'white'}}>SIGN UP</Text>
             </TouchableOpacity>
 
             <Text style={styles.textcenter}>Or sign up with social account</Text>
@@ -47,7 +48,7 @@ export default function Signup() {
                 <TouchableOpacity style={styles.webicon}><FontAwesome name="google" size={28} color="red" /></TouchableOpacity>
                 <TouchableOpacity style={styles.webicon}><FontAwesome name="facebook-square" size={28} color="blue" /></TouchableOpacity>
             </View>
-        </View>
+        </ScrollView>
 
     )
 }
@@ -56,36 +57,36 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        paddingHorizontal: 18,
+        paddingHorizontal: horizontalScale(19),
         backgroundColor: '#F9F9F9',
-        paddingTop:13
+        paddingTop:horizontalScale(13)
     },
     fonts: {
         color: 'black',
         fontSize: 40,
         fontFamily: 'Metropolis-Bold',
-        marginBottom:40,
-        marginTop:20
+        marginBottom: horizontalScale(40),
+        marginTop: horizontalScale(20)
     },
     input: {
         // width: 350,
     
-        height: 60,
+        height: verticalScale(60),
         backgroundColor: '#FFFFFF',
-        margin: 10,
-        padding: 8,
+        margin:  horizontalScale(10),
+        padding:  horizontalScale(8),
         color: 'white',
-        borderRadius: 10,
-        fontSize: 14,
+        borderRadius: moderateScale(8),
+        fontSize: moderateScale(14),
         fontWeight: '500',
         elevation: 2
     },
     button: {
-        width: 350,
-        height: 55,
+        // width:  horizontalScale(350),
+        height: verticalScale(55),
         backgroundColor: '#DB3022',
         color: 'white',
-        borderRadius: 50,
+        borderRadius: moderateScale(50),
         alignItems: 'center',
         elevation: 2,
         justifyContent:'center'
@@ -94,11 +95,11 @@ const styles = StyleSheet.create({
     icon: {
         // display: 'flex',
         flexDirection: 'row',
-        padding: 10,
+        padding: horizontalScale(10),
         // alignItems: 'center',
         justifyContent: 'center',
-        columnGap: 20,
-        marginTop: 30
+        columnGap: horizontalScale(20),
+        marginTop: horizontalScale(30)
 
     },
     text: {
@@ -108,21 +109,21 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        padding: 10,
+        padding: horizontalScale(10),
         alignItems: 'center'
     },
     textcenter:{
         color: 'black',
-         marginTop: 100,
+         marginTop: horizontalScale(100),
           textAlign: 'center'
     },
     webicon:{
         backgroundColor:'#FFFFFF' ,
-        width:85,
-        height:70,
+        width:horizontalScale(85),
+        height:verticalScale(70),
         alignItems:'center',
        justifyContent:'center',
-       borderRadius:17,
+       borderRadius:horizontalScale(17),
     //  shadowColor: 'rgba(0,0,0, .4)', // IOS
        elevation: 2, // Android
     }
