@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: moderateScale(40),
         fontFamily: 'Metropolis-Bold',
-        marginBottom: horizontalScale(40),
-        marginTop: horizontalScale(20)
+        marginBottom: horizontalScale(13),
+        marginTop: horizontalScale(13)
     },
     input: {
         height: 60,

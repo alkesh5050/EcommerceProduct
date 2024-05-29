@@ -1,9 +1,62 @@
-import { View, Text, StatusBar, StyleSheet, ImageBackground, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, StatusBar, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, FlatList, Image } from 'react-native'
 import React from 'react'
 import { horizontalScale, moderateScale, verticalScale } from '../../../assets/matrix/Metrics'
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 
+const data = [
+  {
+    id: 1,
+    title: 'Dorphin perkins',
+    subtitle: 'Evening Dress',
+    image: require('../../../assets/img/drress1.webp'),
+    price: 20,
+    discount: 10
+  },
+  {
+    id: 2,
+    title: 'Dorphin perkins',
+    subtitle: 'Evening Dress',
+    image: require('../../../assets/img/drress1.webp'),
+    price: 20,
+    discount: 10
+  },
+  {
+    id: 3,
+    title: 'Dorphin perkins',
+    subtitle: 'Evening Dress',
+    image: require('../../../assets/img/drress1.webp'),
+    price: 20,
+    discount: 10
+  },
+  {
+    id: 4,
+    title: 'Dorphin perkins',
+    subtitle: 'Evening Dress',
+    image: require('../../../assets/img/drress1.webp'),
+    price: 20,
+    discount: 10
+  }
+]
+
 export default function HomePage() {
+
+  const ProductCard = ({ v }) => (
+    // console.log(v)
+    <View style={styles.product}>
+      <Image style={styles.background1} source={v.image} />
+      <View style={styles.iconview}>
+        <FontAwesome name="star" size={20} color="#FFBA49" />
+        <FontAwesome name="star" size={20} color="#FFBA49" />
+        <FontAwesome name="star" size={20} color="#FFBA49" />
+        <FontAwesome name="star" size={20} color="#FFBA49" />
+        <FontAwesome name="star" size={20} color="#FFBA49" />
+      </View>
+
+      <Text style={styles.textDorothy}>{v.title}</Text>
+      <Text style={styles.textDress}>{v.subtitle}</Text>
+    </View>
+  );
+
   return (
     <ScrollView style={styles.container}>
 
@@ -32,23 +85,17 @@ export default function HomePage() {
           </View>
         </View>
 
-        <View>
-          <ImageBackground style={styles.background1} source={require('../../../assets/img/AlanaCharmingScoopLaceChiffonMiniBridesmaidDresses-Pearl_Pink-1_5df3dfd7-bd0f-4362-ab16-1d1820dd8976_533x.webp')} />
-          <View style={styles.iconview}>
-           <FontAwesome name="star"  size={20} color="#FFBA49" />
-           <FontAwesome name="star" size={20} color="#FFBA49" />
-           <FontAwesome name="star" size={20} color="#FFBA49" />
-           <FontAwesome name="star" size={20} color="#FFBA49" />
-           <FontAwesome name="star" size={20} color="#FFBA49" />
-          </View>
+        <FlatList
+          data={data}
+          renderItem={({item}) => <ProductCard v={item} />}
+          keyExtractor={item => item.id}
+          horizontal={true}
+        />
 
-          <Text style={styles.textDorothy}>Dorothy Perkins</Text>
-          <Text style={styles.textDress}>Evening Dress</Text>
-        </View>
         
-
-
       </View>
+
+
 
 
     </ScrollView>
@@ -113,18 +160,21 @@ const styles = StyleSheet.create({
     color: 'black',
     paddingTop: horizontalScale(17)
   },
-  textDorothy:{
-    color:'#B3B3B3',
-   
+  textDorothy: {
+    color: '#B3B3B3',
+
   },
-  textDress:{
-    color:'black',
+  textDress: {
+    color: 'black',
     fontFamily: 'Metropolis-Bold',
-    fontSize:moderateScale(20)
+    fontSize: moderateScale(20)
   },
-  iconview:{
-    flexDirection:'row',
-    paddingBottom:9,
-    paddingTop:7
+  iconview: {
+    flexDirection: 'row',
+    paddingBottom: 9,
+    paddingTop: 7
+  },
+  product: {
+    marginHorizontal: 10
   }
- })
+})
