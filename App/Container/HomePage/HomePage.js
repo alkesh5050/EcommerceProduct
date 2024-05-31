@@ -87,14 +87,12 @@ export default function HomePage() {
 
         <FlatList
           data={data}
-          renderItem={({item}) => <ProductCard v={item} />}
+          renderItem={({ item }) => <ProductCard v={item} />}
           keyExtractor={item => item.id}
           horizontal={true}
         />
 
-        
       </View>
-
 
 
 
