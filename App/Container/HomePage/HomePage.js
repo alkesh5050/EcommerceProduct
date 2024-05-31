@@ -16,7 +16,7 @@ const data = [
     id: 2,
     title: 'Dorphin perkins',
     subtitle: 'Evening Dress',
-    image: require('../../../assets/img/drress1.webp'),
+    image: require('../../../assets/img/bqq09177.webp'),
     price: 20,
     discount: 10
   },
@@ -38,6 +38,40 @@ const data = [
   }
 ]
 
+const data2 = [
+  {
+    id: 1,
+    title: 'Dorphin perkins',
+    subtitle: 'boy jacket',
+    image: require('../../../assets/img/download.jpeg'),
+    price: 20,
+    discount: 10
+  },
+  {
+    id: 2,
+    title: 'Dorphin perkins',
+    subtitle: 'boy shirt',
+    image: require('../../../assets/img/images.jpeg'),
+    price: 20,
+    discount: 10
+  },
+  {
+    id: 3,
+    title: 'Dorphin perkins',
+    subtitle: 'child jacket',
+    image: require('../../../assets/img/dow.jpeg'),
+    price: 20,
+    discount: 10
+  },
+  {
+    id: 4,
+    title: 'Dorphin perkins',
+    subtitle: 'Evening Dress',
+    image: require('../../../assets/img/drress1.webp'),
+    price: 20,
+    discount: 10
+  }
+]
 export default function HomePage() {
 
   const ProductCard = ({ v }) => (
@@ -50,10 +84,39 @@ export default function HomePage() {
         <FontAwesome name="star" size={20} color="#FFBA49" />
         <FontAwesome name="star" size={20} color="#FFBA49" />
         <FontAwesome name="star" size={20} color="#FFBA49" />
+
       </View>
 
       <Text style={styles.textDorothy}>{v.title}</Text>
       <Text style={styles.textDress}>{v.subtitle}</Text>
+      <View style={styles.pricelist}>
+        <Text style={[styles.textDress, styles.price]}>{v.discount}<FontAwesome style={styles.price} name="dollar" size={20} color="#FFBA49" /></Text>
+
+        <Text style={[styles.textDress, styles.price1]}> {v.price}<FontAwesome style={styles.price1} name="dollar" size={20} color="#FFBA49" /></Text>
+      </View>
+    </View>
+  );
+
+  const NewProductCard = ({ v }) => (
+
+    <View style={styles.product}>
+      <Image style={styles.background1} source={v.image} />
+      <View style={styles.iconview}>
+        <FontAwesome name="star" size={20} color="#FFBA49" />
+        <FontAwesome name="star" size={20} color="#FFBA49" />
+        <FontAwesome name="star" size={20} color="#FFBA49" />
+        <FontAwesome name="star" size={20} color="#FFBA49" />
+        <FontAwesome name="star" size={20} color="#FFBA49" />
+
+      </View>
+
+      <Text style={styles.textDorothy}>{v.title}</Text>
+      <Text style={styles.textDress}>{v.subtitle}</Text>
+      <View style={styles.pricelist}>
+        <Text style={[styles.textDress, styles.price]}>{v.discount}<FontAwesome style={styles.price} name="dollar" size={20} color="#FFBA49" /></Text>
+
+        <Text style={[styles.textDress, styles.price1]}> {v.price}<FontAwesome style={styles.price1} name="dollar" size={20} color="#FFBA49" /></Text>
+      </View>
     </View>
   );
 
@@ -66,6 +129,7 @@ export default function HomePage() {
         <View style={styles.textsale}>
 
           <Text style={styles.sale}>Fashion Sale</Text>
+
 
           <TouchableOpacity style={styles.button}>
             <Text style={{ fontSize: moderateScale(14), color: 'white', }}>Check</Text>
@@ -93,12 +157,27 @@ export default function HomePage() {
         />
 
       </View>
+      <View>
+        <View style={styles.view2}>
+          <View >
+            <Text style={styles.salefont}>New</Text>
+            <Text style={{ color: '#B3B3B3' }}>you've never seen before</Text>
+          </View>
+          <View>
+            <Text style={styles.viewall}>View all</Text>
+          </View>
+        </View>
 
-
-
+        <FlatList
+          data={data2}
+          renderItem={({ item }) => <NewProductCard v={item} />}
+          keyExtractor={item => item.id}
+          horizontal={true}
+        />
+      </View>
     </ScrollView>
   )
-}
+};
 
 
 const styles = StyleSheet.create({
@@ -111,12 +190,12 @@ const styles = StyleSheet.create({
   background: {
     width: '100%',
     height: verticalScale(600),
-
+   
   },
   background1: {
     width: horizontalScale(180),
     height: verticalScale(300),
-
+    borderRadius: moderateScale(10)
   },
   sale: {
     color: 'white',
@@ -174,5 +253,18 @@ const styles = StyleSheet.create({
   },
   product: {
     marginHorizontal: 10
+  },
+  price1: {
+    color: 'red',
+    fontSize: 18
+  },
+  price: {
+    color: '#B3B3B3',
+    fontSize: 18,
+    textDecorationLine: 'line-through'
+  },
+  pricelist: {
+    paddingTop: horizontalScale(3),
+    flexDirection: 'row'
   }
 })
