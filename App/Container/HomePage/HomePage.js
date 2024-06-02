@@ -121,6 +121,7 @@ export default function HomePage() {
   );
 
   return (
+
     <ScrollView style={styles.container}>
 
       <StatusBar translucent={true} backgroundColor={'transparent'} />
@@ -175,6 +176,38 @@ export default function HomePage() {
           horizontal={true}
         />
       </View>
+
+      <View>
+        <Image style={styles.img} source={require('../../../assets/img/page1.jpg')} />
+        <View style={styles.textsale}>
+
+          <Text style={styles.newcoll}>New collection</Text>
+        </View>
+      </View>
+    
+      <View style={styles.DirectView}>
+        <View style={styles.SecondView}>
+          <View style={styles.SummSale}>
+            <View style={styles.SumTextView}>
+              <Text style={styles.SummText1}>Summer Sale</Text>
+            </View>
+          </View>
+
+          <View style={styles.BlackView}>
+            <Image source={require('../../../assets/img/WhatsApp.jpg')} style={{ width: '100%', height: '100%' }} />
+            <Text style={styles.BlackText}>Black</Text>
+          </View>
+        </View>
+
+        <View style={styles.BodieView}>
+          <Image source={require('../../../assets/img/pagehome.webp')} style={{ width: '100%', height: '100%' }} />
+          <View style={styles.hoodieTextView}>
+            <Text style={styles.hoodieText}>Men's hoodies</Text>
+          </View>
+
+        </View>
+      </View>
+
     </ScrollView>
   )
 };
@@ -184,13 +217,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    position: 'relative',
+    // position: 'relative',
 
   },
   background: {
     width: '100%',
     height: verticalScale(600),
-   
+
   },
   background1: {
     width: horizontalScale(180),
@@ -218,7 +251,7 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(20),
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: horizontalScale(10)
+    marginLeft: horizontalScale(18)
 
   },
   view2: {
@@ -227,11 +260,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: horizontalScale(30),
     padding: horizontalScale(20),
+
   },
   salefont: {
     color: 'black',
     fontFamily: 'Metropolis-Bold',
-    fontSize: moderateScale(45)
+    fontSize: moderateScale(38)
   },
   viewall: {
     color: 'black',
@@ -248,11 +282,13 @@ const styles = StyleSheet.create({
   },
   iconview: {
     flexDirection: 'row',
-    paddingBottom: 9,
-    paddingTop: 7
+    paddingBottom: verticalScale(9),
+    paddingTop: verticalScale(7),
+    columnGap: horizontalScale(4)
   },
   product: {
-    marginHorizontal: 10
+    // marginHorizontal: 10,
+    paddingLeft: horizontalScale(17)
   },
   price1: {
     color: 'red',
@@ -266,5 +302,77 @@ const styles = StyleSheet.create({
   pricelist: {
     paddingTop: horizontalScale(3),
     flexDirection: 'row'
+  },
+  img: {
+    width: '100%',
+    height: verticalScale(400),
+  },
+  newcoll: {
+    // position: 'absolute',
+    color: 'white',
+    fontSize: moderateScale(40),
+    fontFamily: 'Metropolis-Bold',
+    marginLeft: horizontalScale(70),
+    top:horizontalScale(20)
+  },
+
+  DirectView: {
+    width: '100%',
+    height: verticalScale(400),
+    flexDirection: 'row'
+  },
+
+  SecondView: {
+    width: '50%',
+    height:verticalScale(400)
+  },
+  SummSale: {
+    backgroundColor: 'white',
+    width: '100%',
+    height: '50%',
+    position: 'relative'
+  },
+  SumTextView: {
+    width: horizontalScale(150),
+    height:verticalScale(100),
+    position: 'absolute',
+    bottom: horizontalScale(30),
+    left: horizontalScale(18)
+  },
+  SummText1: {
+    color: '#DB3022',
+    fontSize: moderateScale(35),
+    fontFamily: 'Metropolis-Bold',
+  },
+  BlackView: {
+    backgroundColor: 'red',
+    width: '100%',
+    height: '50%',
+    position: 'relative'
+  },
+  BlackText: {
+    color: 'white',
+    fontSize:  moderateScale(35),
+    fontFamily: 'Metropolis-Bold',
+    position: 'absolute',
+    bottom: horizontalScale(20),
+    left: horizontalScale(20)
+  },
+  BodieView: {
+    backgroundColor: 'red',
+    width: '50%',
+    height: '100%',
+    position: 'relative'
+  },
+  hoodieTextView: {
+    position: 'absolute',
+    bottom: horizontalScale(90),
+    left: horizontalScale(40),
+
+  },
+  hoodieText: {
+    color: 'white',
+    fontSize: moderateScale(35),
+    fontFamily: 'Metropolis-Bold',
   }
 })
