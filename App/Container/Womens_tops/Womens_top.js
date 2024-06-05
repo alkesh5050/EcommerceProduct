@@ -1,6 +1,8 @@
-import { View, Text, ScrollView, StatusBar, StyleSheet, FlatList, Image } from 'react-native'
+import { View, Text, ScrollView, StatusBar, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { horizontalScale, moderateScale, verticalScale } from '../../../assets/matrix/Metrics';
 
 const data = [
@@ -32,7 +34,7 @@ const data2 = [
     subtitle: 'Mango',
     image: require('../../../assets/img/drress1.webp'),
     price: 51,
-
+    ratting:3
   },
   {
     id: 2,
@@ -40,6 +42,7 @@ const data2 = [
     subtitle: 'Dorothy Perkins',
     image: require('../../../assets/img/bqq09177.webp'),
     price: 34,
+    ratting:0
   },
   {
     id: 3,
@@ -47,6 +50,7 @@ const data2 = [
     subtitle: 'LOST ink',
     image: require('../../../assets/img/drress1.webp'),
     price: 12,
+    ratting:10
   },
   {
     id: 4,
@@ -54,19 +58,20 @@ const data2 = [
     subtitle: 'Topshop',
     image: require('../../../assets/img/drress1.webp'),
     price: 51,
+    ratting:3
   }
 ]
 export default function Womens_top() {
 
   const ProductCard = ({ v }) => (
 
-    <View style={styles.product}>
+    <TouchableOpacity style={styles.product}>
       <View style={styles.fav_tshirts}><Text style={styles.textfont}>{v.title}</Text></View>
 
-    </View>
+    </TouchableOpacity>
   );
   const NewProductCard = ({ v }) => (
-    <View style={styles.olldeta}>
+    <TouchableOpacity style={styles.olldeta}>
       <Image source={v.image} style={styles.img} />
       <View style={styles.pullovertext}>
         <Text style={styles.protext}>{v.title}</Text>
@@ -78,22 +83,24 @@ export default function Womens_top() {
           <FontAwesome name="star" size={18} color="#FFBA49" />
           <FontAwesome name="star" size={18} color="#FFBA49" />
           <FontAwesome name="star" size={18} color="#FFBA49" />
+          <Text style={styles.starrating}>({v.ratting})</Text>
         </View>
         <Text style={styles.price}>{v.price}$</Text>
+        <TouchableOpacity><FontAwesome name="heart-o" size={20} color="#B9B9B9" style={styles.heart} /></TouchableOpacity>
       </View>
 
-    </View>
+    </TouchableOpacity>
   );
   return (
     <ScrollView style={styles.container}>
       <StatusBar
         animated={true}
-        backgroundColor="#61dafb"
+        backgroundColor={'transparent'}
       />
-      <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
+      <TouchableOpacity style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
         <FontAwesome name="angle-left" size={45} color="black" />
         <FontAwesome style={{ paddingTop: 9 }} name="search" size={25} color="black" />
-      </View>
+      </TouchableOpacity>
       <Text style={styles.fonts}>Women's tops</Text>
 
       <FlatList
@@ -104,9 +111,9 @@ export default function Womens_top() {
       />
 
       <View style={styles.fontsicon}>
-        <FontAwesome name="wifi" size={26} color="black" /><Text style={styles.filter}>filters</Text>
-        <FontAwesome name="arrows-v" size={26} color="black" /><Text style={styles.filter}>price:lowest to high</Text>
-        <FontAwesome name="th" size={26} color="black" />
+        <TouchableOpacity style={styles.filtertoch}><Ionicons name="filter" size={26} color="black" /><Text style={styles.filter}>filters</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.filtertoch}><FontAwesome name="arrows-v" size={26} color="black" /><Text style={styles.filter}>price:lowest to high</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.filtertoch}><FontAwesome name="th" size={26} color="black" /></TouchableOpacity>
       </View>
 
       <FlatList
@@ -163,7 +170,8 @@ const styles = StyleSheet.create({
   },
   filter: {
     color: 'black',
-    paddingRight: verticalScale(30)
+    // paddingRight: verticalScale(30),
+    marginLeft: 10
   },
   olldeta: {
     flexDirection: 'row',
@@ -201,5 +209,22 @@ const styles = StyleSheet.create({
     height: '100%',
     borderBottomLeftRadius: horizontalScale(10),
     borderTopLeftRadius: horizontalScale(10),
-  }
+  },
+  filtertoch: {
+    flexDirection: 'row'
+  },
+  heart: {
+    position: 'absolute',
+    bottom: -24,
+    right: -120,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  starrating: {
+    color: '#9B9B9B',
+    fontSize: 15,
+    bottom: 3
+  },
 });

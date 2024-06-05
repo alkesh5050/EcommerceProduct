@@ -6,6 +6,7 @@ import Login from './App/Container/Login/Login';
 import Forgot from './App/Container/Forgot/Forgot';
 import HomePage from './App/Container/HomePage/HomePage';
 import Womens_top from './App/Container/Womens_tops/Womens_top';
+import Favorites from './App/Container/Favorites/Favorites';
 
 
 export default function App() {
@@ -18,7 +19,8 @@ export default function App() {
     {/* <Login/> */}
     {/* <Forgot/> */}
     {/* <HomePage/> */}
-    <Womens_top/>
+    {/* <Womens_top/> */}
+    <Favorites/>
     </>
   )
 }
