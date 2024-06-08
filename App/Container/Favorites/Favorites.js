@@ -81,16 +81,16 @@ export default function Favorites() {
     </TouchableOpacity>
   );
   const NewProductCard = ({ v }) => (
-    <TouchableOpacity style={styles.olldeta}> 
+    <TouchableOpacity style={styles.olldeta}>
       <Image source={v.image} style={styles.img} />
       <View style={styles.pullovertext}>
 
-      <View style={{flexDirection:'row',columnGap:160}}>
-      <Text style={styles.protext2}>{v.title}</Text>
-        <TouchableOpacity><Fontisto  name="close-a" size={18} color="#B9B9B9" /></TouchableOpacity>
-      </View>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <Text style={styles.protext2}>{v.title}</Text>
+          <TouchableOpacity><Fontisto name="close-a" size={18} color="#B9B9B9" /></TouchableOpacity>
+        </View>
 
-      <Text style={styles.protext}>{v.subtitle}</Text>
+        <Text style={styles.protext}>{v.subtitle}</Text>
 
         <View style={styles.Color}>
           <Text style={styles.Colortext}>color:<Text style={styles.colorsize}>{v.color}</Text></Text>
@@ -98,7 +98,9 @@ export default function Favorites() {
         </View>
 
         <View style={styles.iconview}>
-          <Text style={styles.price}>{v.price}$</Text>
+          <View><Text style={styles.price}>{v.price}$</Text></View>
+
+
           <View style={styles.star}>
             <FontAwesome name="star" size={18} color="#FFBA49" />
             <FontAwesome name="star" size={18} color="#FFBA49" />
@@ -106,11 +108,17 @@ export default function Favorites() {
             <FontAwesome name="star" size={18} color="#FFBA49" />
             <FontAwesome name="star" size={18} color="#FFBA49" />
             <Text style={styles.starrating}>({v.ratting})</Text>
-            <View style={styles.shoppingcard}>
-              <Fontisto name="shopping-bag" size={18} color="#F9F9F9" />
+
+
+      
+          </View>
+          <View>
+              <TouchableOpacity style={styles.shoppingcard}>
+
+                <Fontisto name="shopping-bag" size={18} color="#F9F9F9" />
+              </TouchableOpacity>
             </View>
 
-          </View>
 
         </View>
       </View>
@@ -123,9 +131,9 @@ export default function Favorites() {
         animated={true}
         backgroundColor={'transparent'}
       />
-      <TouchableOpacity style={{}}>
-        {/* <FontAwesome name="angle-left" size={45} color="black" /> */}
-        <FontAwesome style={{ paddingTop: 9, }} name="search" size={25} color="black" />
+      <TouchableOpacity style={{ paddingBottom: 25 }}>
+
+        <Fontisto style={styles.FontAwesomeicon} name="search" size={22} color="black" />
       </TouchableOpacity>
       <Text style={styles.fonts}>Favorites</Text>
 
@@ -188,11 +196,11 @@ const styles = StyleSheet.create({
     paddingRight: horizontalScale(9),
   },
   fontsicon: {
-    marginTop: verticalScale(20),
+    marginTop: horizontalScale(20),
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: '#F9F9F9',
-    marginBottom: verticalScale(20)
+    marginBottom: horizontalScale(20)
   },
   filter: {
     color: 'black',
@@ -207,6 +215,7 @@ const styles = StyleSheet.create({
     borderRadius: horizontalScale(15),
   },
   pullovertext: {
+    flex: 1,
     margin: '3%',
   },
   protext: {
@@ -221,9 +230,9 @@ const styles = StyleSheet.create({
   },
   iconview: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingBottom: verticalScale(9),
     paddingTop: verticalScale(7),
-    columnGap: horizontalScale(28),
 
   },
   price: {
@@ -255,21 +264,27 @@ const styles = StyleSheet.create({
   },
   starrating: {
     color: '#9B9B9B',
-    fontSize: 15,
-    bottom: 3
+    fontSize: moderateScale(15),
+    bottom: verticalScale(3)
   },
   shoppingcard: {
-    position: 'relative',
-    bottom: -10,
+    // position: 'relative',
+    bottom: verticalScale(-10),
     backgroundColor: '#DB2032',
-    height: 45,
-    width: 45,
-    borderRadius: 100,
+    height: verticalScale(45),
+    width: horizontalScale(45),
+    borderRadius: moderateScale(100),
     alignItems: 'center',
     justifyContent: 'center',
 
   },
   filtertoch: {
     flexDirection: 'row'
+  },
+  FontAwesomeicon: {
+    paddingTop: horizontalScale(9),
+    position: 'absolute',
+    right: horizontalScale(0),
+
   }
 });

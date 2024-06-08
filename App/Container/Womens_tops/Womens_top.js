@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, StatusBar, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { horizontalScale, moderateScale, verticalScale } from '../../../assets/matrix/Metrics';
@@ -34,7 +34,7 @@ const data2 = [
     subtitle: 'Mango',
     image: require('../../../assets/img/drress1.webp'),
     price: 51,
-    ratting:3
+    ratting: 3
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ const data2 = [
     subtitle: 'Dorothy Perkins',
     image: require('../../../assets/img/bqq09177.webp'),
     price: 34,
-    ratting:0
+    ratting: 0
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const data2 = [
     subtitle: 'LOST ink',
     image: require('../../../assets/img/drress1.webp'),
     price: 12,
-    ratting:10
+    ratting: 10
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ const data2 = [
     subtitle: 'Topshop',
     image: require('../../../assets/img/drress1.webp'),
     price: 51,
-    ratting:3
+    ratting: 3
   }
 ]
 export default function Womens_top() {
@@ -86,8 +86,11 @@ export default function Womens_top() {
           <Text style={styles.starrating}>({v.ratting})</Text>
         </View>
         <Text style={styles.price}>{v.price}$</Text>
-        <TouchableOpacity><FontAwesome name="heart-o" size={20} color="#B9B9B9" style={styles.heart} /></TouchableOpacity>
+        
       </View>
+      <TouchableOpacity style={styles.heart}>
+          <FontAwesome name="heart-o" size={20} color="#B9B9B9"/>
+      </TouchableOpacity>
 
     </TouchableOpacity>
   );
@@ -97,10 +100,10 @@ export default function Womens_top() {
         animated={true}
         backgroundColor={'transparent'}
       />
-      <TouchableOpacity style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-        <FontAwesome name="angle-left" size={45} color="black" />
-        <FontAwesome style={{ paddingTop: 9 }} name="search" size={25} color="black" />
-      </TouchableOpacity>
+      <View style={styles.leftarow}>
+        <TouchableOpacity><FontAwesome name="angle-left" size={45} color="black" /></TouchableOpacity>
+        <TouchableOpacity><Fontisto style={{ paddingTop: 9 }} name="search" size={25} color="black" /></TouchableOpacity>
+      </View>
       <Text style={styles.fonts}>Women's tops</Text>
 
       <FlatList
@@ -134,6 +137,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
     paddingHorizontal: horizontalScale(19),
     paddingTop: horizontalScale(13)
+  },
+  leftarow:{
+ justifyContent: 'space-between',
+  flexDirection: 'row'
   },
   fonts: {
     color: 'black',
@@ -179,10 +186,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#FFFFFF',
     borderRadius: horizontalScale(15),
+    position: 'relative'
   },
   pullovertext: {
     margin: '3%',
-
+    
   },
   protext: {
     color: 'black',
@@ -215,8 +223,8 @@ const styles = StyleSheet.create({
   },
   heart: {
     position: 'absolute',
-    bottom: -24,
-    right: -120,
+    bottom: 0,
+    right: 0,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 10,
