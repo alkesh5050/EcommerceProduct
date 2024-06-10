@@ -9,6 +9,7 @@ import Womens_top from './App/Container/Womens_tops/Womens_top';
 import Favorites from './App/Container/Favorites/Favorites';
 import OrderDetails from './App/Container/OrderDetails/OrderDetails';
 import ShippingAddresses from './App/Container/ShippingAddresses/ShippingAddresses';
+import Slider1 from './App/Container/Slider/Slider';
 
 
 export default function App() {
@@ -24,7 +25,8 @@ export default function App() {
       {/* <Womens_top/> */}
       {/* <Favorites/> */}
       {/* <OrderDetails /> */}
-      <ShippingAddresses/>
+      {/* <ShippingAddresses/> */}
+      <Slider1/>
     </>
   )
 }
