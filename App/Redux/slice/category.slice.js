@@ -14,7 +14,7 @@ export const fetchCategories = createAsyncThunk(
         try {
             const Categorydata = [];
             await firestore()
-                .collection('Category')
+                .collection('category2')
                 .get()
                 .then(querySnapshot => {
                     querySnapshot.forEach(documentSnapshot => {
@@ -24,6 +24,7 @@ export const fetchCategories = createAsyncThunk(
    
             return Categorydata
         } catch (error) {
+            console.log("Categorydata",Categorydata);
             console.log(error);
         }
     },

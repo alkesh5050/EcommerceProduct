@@ -1,7 +1,9 @@
 import { View, Text, StatusBar, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, FlatList, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { horizontalScale, moderateScale, verticalScale } from '../../../assets/matrix/Metrics'
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategories } from '../../Redux/slice/category.slice';
 
 const data = [
   {
@@ -72,11 +74,44 @@ const data2 = [
     discount: 10
   }
 ]
-export default function HomePage() {
+
+const data11 = [
+  {
+    id: 1,
+    name: 'man'
+  },
+  {
+    id: 2,
+    name: 'woman'
+  },
+  {
+    id: 3,
+    name: 'chaid'
+  }
+]
+
+// const company =  [{ id:"1", name:"somename"},{ id:"2", name:"somename"}]
+
+// company.map(({ id, name }) => ({ companyId: id, companyName: name, companyId: id, companyName: name }));
+
+// console.log(company);
+export default function HomePage({route, navigation}) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [])
+
+
+
+  const category = useSelector(state => state.category);
+
+  console.log(category.categories);
+  const datamap = category.categories
 
   const ProductCard = ({ v }) => (
     // console.log(v)
-    <View style={styles.product}>
+    <TouchableOpacity style={styles.product} onPress={() => navigation.navigate("Product")}>
       <Image style={styles.background1} source={v.image} />
       <View style={styles.iconview}>
         <FontAwesome name="star" size={20} color="#FFBA49" />
@@ -94,7 +129,7 @@ export default function HomePage() {
 
         <Text style={[styles.textDress, styles.price1]}> {v.price}<FontAwesome style={styles.price1} name="dollar" size={20} color="#FFBA49" /></Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 
   const NewProductCard = ({ v }) => (
@@ -119,6 +154,33 @@ export default function HomePage() {
       </View>
     </View>
   );
+  // const renderCategory = ({ item }) => (
+  //   <View>
+  //     <Image style={styles.img} source={require('../../../assets/img/page1.jpg')} />
+  //     <View style={styles.textsale}>
+  //       <Text style={styles.newcoll}>New collection {item.name}</Text>
+  //     </View>
+  //     <View style={styles.DirectView}>
+  //       <View style={styles.SecondView}>
+  //         <View style={styles.SummSale}>
+  //           <View style={styles.SumTextView}>
+  //             <Text style={styles.SummText1}>{item.name}</Text>
+  //           </View>
+  //         </View>
+  //         <View style={styles.BlackView}>
+  //           <Image source={require('../../../assets/img/WhatsApp.jpg')} style={{ width: '100%', height: '100%' }} />
+  //           <Text style={styles.BlackText}>Black</Text>
+  //         </View>
+  //       </View>
+  //       <View style={styles.BodieView}>
+  //         <Image source={require('../../../assets/img/pagehome.webp')} style={{ width: '100%', height: '100%' }} />
+  //         <View style={styles.hoodieTextView}>
+  //           <Text style={styles.hoodieText}>{item.name}</Text>
+  //         </View>
+  //       </View>
+  //     </View>
+  //   </View>
+  // );
 
   return (
 
@@ -176,38 +238,47 @@ export default function HomePage() {
           horizontal={true}
         />
       </View>
+      {
+        data11.map((v, i) => (
+          <View>
+            <View>
+              <Image style={styles.img} source={require('../../../assets/img/page1.jpg')} />
+              <View style={styles.textsale}>
 
-      <View>
-        <Image style={styles.img} source={require('../../../assets/img/page1.jpg')} />
-        <View style={styles.textsale}>
+                <Text style={styles.newcoll}>New collection{v.name}</Text>
+              </View>
+            </View>
 
-          <Text style={styles.newcoll}>New collection</Text>
-        </View>
-      </View>
-    
-      <View style={styles.DirectView}>
-        <View style={styles.SecondView}>
-          <View style={styles.SummSale}>
-            <View style={styles.SumTextView}>
-              <Text style={styles.SummText1}>Summer Sale</Text>
+            <View style={styles.DirectView}>
+              <View style={styles.SecondView}>
+                <View style={styles.SummSale}>
+                  <View style={styles.SumTextView}>
+                    <Text style={styles.SummText1}>{v.name}</Text>
+                  </View>
+                </View>
+
+                <View style={styles.BlackView}>
+                  <Image source={require('../../../assets/img/WhatsApp.jpg')} style={{ width: '100%', height: '100%' }} />
+                  <Text style={styles.BlackText}>Black</Text>
+                </View>
+              </View>
+
+              <View style={styles.BodieView}>
+                <Image source={require('../../../assets/img/pagehome.webp')} style={{ width: '100%', height: '100%' }} />
+                <View style={styles.hoodieTextView}>
+                  <Text style={styles.hoodieText}>{v.name}</Text>
+                </View>
+
+              </View>
             </View>
           </View>
-
-          <View style={styles.BlackView}>
-            <Image source={require('../../../assets/img/WhatsApp.jpg')} style={{ width: '100%', height: '100%' }} />
-            <Text style={styles.BlackText}>Black</Text>
-          </View>
-        </View>
-
-        <View style={styles.BodieView}>
-          <Image source={require('../../../assets/img/pagehome.webp')} style={{ width: '100%', height: '100%' }} />
-          <View style={styles.hoodieTextView}>
-            <Text style={styles.hoodieText}>Men's hoodies</Text>
-          </View>
-
-        </View>
-      </View>
-
+        ))
+      }
+      {/* <FlatList
+        data={data11}
+        renderItem={renderCategory}
+        keyExtractor={item => item.id.toString()}
+      /> */}
     </ScrollView>
   )
 };
@@ -313,7 +384,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(40),
     fontFamily: 'Metropolis-Bold',
     marginLeft: horizontalScale(70),
-    top:horizontalScale(20)
+    top: horizontalScale(20)
   },
 
   DirectView: {
@@ -324,7 +395,7 @@ const styles = StyleSheet.create({
 
   SecondView: {
     width: '50%',
-    height:verticalScale(400)
+    height: verticalScale(400)
   },
   SummSale: {
     backgroundColor: 'white',
@@ -334,7 +405,7 @@ const styles = StyleSheet.create({
   },
   SumTextView: {
     width: horizontalScale(150),
-    height:verticalScale(100),
+    height: verticalScale(100),
     position: 'absolute',
     bottom: horizontalScale(30),
     left: horizontalScale(18)
@@ -352,7 +423,7 @@ const styles = StyleSheet.create({
   },
   BlackText: {
     color: 'white',
-    fontSize:  moderateScale(35),
+    fontSize: moderateScale(35),
     fontFamily: 'Metropolis-Bold',
     position: 'absolute',
     bottom: horizontalScale(20),

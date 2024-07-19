@@ -13,16 +13,26 @@ import Slider1 from './App/Container/Slider/Slider';
 import Counter from './App/Container/Counter/Counter';
 import { Provider } from 'react-redux';
 import { configureStore } from './App/Redux/store';
+import Rating from './App/Container/rating/Rating';
+import { NavigationContainer } from '@react-navigation/native';
+import SubCategories2 from './App/Container/subcategory/SubCategories2';
+import ProductCard from './App/Container/productcard/ProductCard';
+import Favoritespage from './App/Container/favoritespage/FavoritesPage';
+import AddShipingAddress from './App/Container/AddShipingAddress/AddShipingAddress';
+import Filter from './App/Container/filter/Filter';
+import Bottomtab from './App/Navigator/Bottomtab';
 
 
 export default function App() {
-  const store=configureStore()
+  const store = configureStore()
   return (
- 
+
     <Provider store={store}>
       {/* <Text style={{fontFamily:'Metropolis-Light',fontSize:90}}>App</Text>
       <FontAwesome name="facebook-square" size={50} color="red"/> */}
-
+      <NavigationContainer>
+        <Bottomtab/>
+      </NavigationContainer>
       {/* <Signup/> */}
       {/* <Login/> */}
       {/* <Forgot/> */}
@@ -32,7 +42,13 @@ export default function App() {
       {/* <OrderDetails /> */}
       {/* <ShippingAddresses/> */}
       {/* <Slider1/> */}
-      <Counter/>
-</Provider>
+      {/* <Counter/> */}
+      {/* <Rating/> */}
+      {/* <SubCategories2/> */}
+      {/* <ProductCard/> */}
+      {/* <Filter/> */}
+      {/* <AddShipingAddress/> */}
+      {/* <Favoritespage /> */}
+    </Provider>
   )
 }

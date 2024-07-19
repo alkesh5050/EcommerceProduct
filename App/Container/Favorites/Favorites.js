@@ -71,7 +71,7 @@ const data2 = [
     ratting: 4
   }
 ]
-export default function Favorites() {
+export default function Favorites({route, navigation}) {
 
   const ProductCard = ({ v }) => (
 
@@ -81,7 +81,7 @@ export default function Favorites() {
     </TouchableOpacity>
   );
   const NewProductCard = ({ v }) => (
-    <TouchableOpacity style={styles.olldeta}>
+    <TouchableOpacity style={styles.olldeta} onPress={() => navigation.navigate("Product")}>
       <Image source={v.image} style={styles.img} />
       <View style={styles.pullovertext}>
 
