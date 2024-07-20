@@ -8,7 +8,10 @@ import Login from '../Container/Login/Login';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { FavoritesStack } from './stackNavigator';
+import { FavoritesStack, HomeStack } from './StackNavigator';
+import SubCategories2 from '../Container/subcategory/SubCategories2';
+import My_Bag from '../Container/mybag/My_Bag';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +27,25 @@ export default function Bottomtab() {
                     )
                 }}
                 name="Home"
-                component={HomePage} />
+                component={HomeStack} />
+            <Tab.Screen
+                options={{
+                    headerShown: false,
+                    tabBarLabel: 'My_Bag',
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome name="shopping-bag" color={color} size={size} />
+                    )
+                }}
+                name="My_Bag" component={My_Bag} />
+            <Tab.Screen
+                options={{
+                    headerShown: false,
+                    tabBarLabel: 'OrderDetails',
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome name="reorder" color={color} size={size} />
+                    )
+                }}
+                name="OrderDetails" component={OrderDetails} />
             <Tab.Screen
                 options={{
                     headerShown: false,
@@ -39,21 +60,13 @@ export default function Bottomtab() {
             <Tab.Screen
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'OrderDetails',
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome name="reorder" color={color} size={size} />
-                    )
-                }}
-                name="OrderDetails" component={OrderDetails} />
-            <Tab.Screen
-                options={{
-                    headerShown: false,
                     tabBarLabel: 'login',
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="login" color={color} size={size} />
                     )
                 }}
                 name="Login" component={Login} />
+            {/* <Tab.Screen name="SubCategories2" component={SubCategories2} /> */}
         </Tab.Navigator>
     )
 }

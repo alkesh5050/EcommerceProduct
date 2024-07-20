@@ -134,7 +134,7 @@ export default function HomePage({route, navigation}) {
 
   const NewProductCard = ({ v }) => (
 
-    <View style={styles.product}>
+    <TouchableOpacity style={styles.product} onPress={() => navigation.navigate("Product")} >
       <Image style={styles.background1} source={v.image} />
       <View style={styles.iconview}>
         <FontAwesome name="star" size={20} color="#FFBA49" />
@@ -152,7 +152,7 @@ export default function HomePage({route, navigation}) {
 
         <Text style={[styles.textDress, styles.price1]}> {v.price}<FontAwesome style={styles.price1} name="dollar" size={20} color="#FFBA49" /></Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
   // const renderCategory = ({ item }) => (
   //   <View>
@@ -186,7 +186,10 @@ export default function HomePage({route, navigation}) {
 
     <ScrollView style={styles.container}>
 
-      <StatusBar translucent={true} backgroundColor={'transparent'} />
+      <StatusBar 
+      translucent={true} 
+      backgroundColor={'transparent'}
+       />
       <View style={styles.background}>
         <ImageBackground style={styles.background} source={require('../../../assets/img/pexels-godisable-jacob-226636-896293.jpg')} />
         <View style={styles.textsale}>

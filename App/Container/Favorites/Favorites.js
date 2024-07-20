@@ -129,13 +129,14 @@ export default function Favorites({route, navigation}) {
     <ScrollView style={styles.container}>
       <StatusBar
         animated={true}
-        backgroundColor={'transparent'}
+        backgroundColor="transparent"
+        barStyle="dark-content"
       />
       <TouchableOpacity style={{ paddingBottom: 25 }}>
 
         <Fontisto style={styles.FontAwesomeicon} name="search" size={22} color="black" />
       </TouchableOpacity>
-      <Text style={styles.fonts}>Favorites</Text>
+      <Text style={styles.fonts}></Text>
 
       <FlatList
         data={data}
@@ -167,14 +168,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5F5F5',
     paddingHorizontal: horizontalScale(19),
-    paddingTop: horizontalScale(13)
+    // paddingTop: horizontalScale(13)
   },
   fonts: {
     color: 'black',
     fontSize: 35,
     fontFamily: 'Metropolis-Bold',
-    marginBottom: horizontalScale(15),
-    marginTop: horizontalScale(35)
+    // marginBottom: horizontalScale(15),
+    // marginTop: horizontalScale(35)
   },
   fav_tshirts: {
     width: horizontalScale(90),
@@ -282,7 +283,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   FontAwesomeicon: {
-    paddingTop: horizontalScale(9),
+    // paddingTop: horizontalScale(9),
     position: 'absolute',
     right: horizontalScale(0),
 

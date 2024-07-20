@@ -21,6 +21,11 @@ import Favoritespage from './App/Container/favoritespage/FavoritesPage';
 import AddShipingAddress from './App/Container/AddShipingAddress/AddShipingAddress';
 import Filter from './App/Container/filter/Filter';
 import Bottomtab from './App/Navigator/Bottomtab';
+import CategoriesTwo from './App/Container/categorys/CategoriesTwo';
+import My_Orders from './App/Container/myorder/My_Orders';
+import My_Bag from './App/Container/mybag/My_Bag';
+import My_Profile from './App/Container/myprofile/My_Profile';
+import Success from './App/Container/Success/Success';
 
 
 export default function App() {
@@ -49,6 +54,11 @@ export default function App() {
       {/* <Filter/> */}
       {/* <AddShipingAddress/> */}
       {/* <Favoritespage /> */}
+      {/* <CategoriesTwo/> */}
+      {/* <My_Orders/> */}
+      {/* <My_Bag/> */}
+      {/* <My_Profile/> */}
+      {/* <Success/> */}
     </Provider>
   )
 }
