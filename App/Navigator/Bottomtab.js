@@ -8,9 +8,11 @@ import Login from '../Container/Login/Login';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { FavoritesStack, HomeStack } from './StackNavigator';
+import { FavoritesStack, HomeStack, My_BagStack, shopStack } from './StackNavigator';
 import SubCategories2 from '../Container/subcategory/SubCategories2';
 import My_Bag from '../Container/mybag/My_Bag';
+import My_Profile from '../Container/myprofile/My_Profile';
+import My_profilee from '../Container/myorder/My_Orders';
 
 
 const Tab = createBottomTabNavigator();
@@ -21,7 +23,7 @@ export default function Bottomtab() {
             <Tab.Screen
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Home',
+                    tabBarLabel: 'Home ',
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome name="home" color={color} size={size} />
                     )
@@ -36,16 +38,16 @@ export default function Bottomtab() {
                         <FontAwesome name="shopping-bag" color={color} size={size} />
                     )
                 }}
-                name="My_Bag" component={My_Bag} />
+                name="My_Bag" component={My_BagStack} />
             <Tab.Screen
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'OrderDetails',
+                    tabBarLabel: 'Shop',
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome name="reorder" color={color} size={size} />
+                        <FontAwesome name="shopping-cart" color={color} size={size} />
                     )
                 }}
-                name="OrderDetails" component={OrderDetails} />
+                name="shop" component={shopStack} />
             <Tab.Screen
                 options={{
                     headerShown: false,
@@ -60,12 +62,12 @@ export default function Bottomtab() {
             <Tab.Screen
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'login',
+                    tabBarLabel: 'My_Profile',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="login" color={color} size={size} />
+                        <FontAwesome name="user-circle" color={color} size={size} />
                     )
                 }}
-                name="Login" component={Login} />
+                name="My_Profile" component={My_profilee} />
             {/* <Tab.Screen name="SubCategories2" component={SubCategories2} /> */}
         </Tab.Navigator>
     )

@@ -28,7 +28,7 @@ const useaddresses = [
     },
 ];
 
-export default function ShippingAddresses() {
+export default function ShippingAddresses({ route, navigation }) {
     const ShippingAddresses = ({ v }) => (
         <View style={styles.olldeta}>
             <Text style={styles.addtext1}>{v.name}</Text>
@@ -49,12 +49,12 @@ export default function ShippingAddresses() {
         <ScrollView style={styles.container}>
             <StatusBar animated={true} backgroundColor={'transparent'} />
 
-            <View style={styles.Ordertext}>
+            {/* <View style={styles.Ordertext}>
                 <TouchableOpacity><FontAwesome name="angle-left" size={35} color="black" /></TouchableOpacity>
                 <View style={styles.viewshipping}>
                     <Text style={styles.Ordertext2}>Shipping Addresses</Text>
                 </View>
-            </View>
+            </View> */}
 
             <FlatList
                 data={useaddresses}
@@ -66,7 +66,9 @@ export default function ShippingAddresses() {
                 <MaterialCommunityIcons name="plus-circle" size={35} color="black" />
             </TouchableOpacity>
             </View>
-           
+            <TouchableOpacity style={styles.place} onPress={() => navigation.navigate("Success")}>
+                <Text style={styles.placetext}>place your order</Text>
+            </TouchableOpacity>
         </ScrollView>
     );
 }
@@ -136,5 +138,16 @@ const styles = StyleSheet.create({
     btnView:{
         flexDirection:'row',
         justifyContent:'flex-end'
+    },
+    place:{
+        justifyContent:'center',
+        // borderWidth:1,
+         height:45,
+         borderRadius:40,
+         backgroundColor:'#DB3220',
+         marginTop:40  
+    },
+    placetext:{
+        color:'white',justifyContent:'center',textAlign:'center',fontSize:20
     }
 });

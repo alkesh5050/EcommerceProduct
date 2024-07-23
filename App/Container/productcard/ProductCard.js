@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     ArrowView: {
         width: '100%',
         height: verticalScale(80),
-        marginTop: verticalScale(40),
+        // marginTop: verticalScale(40),
         flexDirection: 'row',
         justifyContent: 'space-between'
     },

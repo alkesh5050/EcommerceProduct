@@ -14,7 +14,7 @@ import React from 'react';
 import { horizontalScale, moderateScale, verticalScale } from '../../../assets/matrix/Metrics';
 
 
-export default function My_Orders() {
+export default function My_profilee({ route, navigation }) {
   return (
     <ScrollView style={{backgroundColor:'#FFFFFF'}}>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
@@ -45,7 +45,7 @@ export default function My_Orders() {
         <View style={Styles.datamain}>
           <View style={Styles.dataHead}>
             <View>
-              <Text style={Styles.data1}>My orders</Text>
+             <TouchableOpacity  onPress={() => navigation.navigate("My_Oeders")}><Text style={Styles.data1}>My orders</Text></TouchableOpacity>
               <Text style={Styles.data2}>Already have 12 orders</Text>
             </View>
 
@@ -62,7 +62,7 @@ export default function My_Orders() {
 
           <View style={Styles.dataHead}>
             <View>
-              <Text style={Styles.data1}>Shipping addresses</Text>
+             <TouchableOpacity onPress={() => navigation.navigate("ShippingAddresses")}><Text style={Styles.data1}>Shipping addresses</Text></TouchableOpacity> 
               <Text style={Styles.data2}>3 ddresses</Text>
             </View>
 

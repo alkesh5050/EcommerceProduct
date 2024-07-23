@@ -57,7 +57,7 @@ const Data2 = [
         price: 9
     }
 ]
-export default function SubCategories2() {
+export default function SubCategories2({ route, navigation }) {
     const ProductCard = ({ v }) => (
 
         <View style={styles.CategorisView}>
@@ -65,14 +65,14 @@ export default function SubCategories2() {
 
         </View>
     )
-    const ProductData = ({ v }) => (
+    const ProductData = ({ v,n }) => (
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <View style={styles.productMainView}>
+            <TouchableOpacity style={styles.productMainView} onPress={() => navigation.navigate("Product")}>
                 <View style={styles.productImg}>
                     <Image source={v.img} style={{ width: '100%', height: '100%',borderTopLeftRadius:15,borderTopRightRadius:15}} />   
                 </View>
                 <View>
-                <TouchableOpacity><FontAwesome name="heart-o" size={20} color="black" style={styles.heart} /></TouchableOpacity>
+                <TouchableOpacity style={{zIndex:999}}><FontAwesome name="heart-o" size={20} color="black" style={styles.heart} /></TouchableOpacity>
                 </View>
                 <View style={styles.productText}>
                     <View style={styles.iconview}>
@@ -88,7 +88,7 @@ export default function SubCategories2() {
                     <Text style={styles.price}>{v.price}$</Text>
                 </View>
 
-            </View>
+            </TouchableOpacity>
         </View>
     )
     return (
@@ -98,10 +98,15 @@ export default function SubCategories2() {
                 translucent backgroundColor="transparent"
                 barStyle="dark-content"
             />
-            <View style={styles.ArrowView}>
+            {/* <View style={styles.ArrowView}>
                 <Text style={styles.KeyboardArrow}><MaterialIcons name="keyboard-arrow-left" size={50} color="black" /></Text>
                 <Text style={styles.ArrowText}>Women's tops</Text>
                 <TouchableOpacity><MaterialIcons name="search" size={30} color="black" style={{ marginTop: 25 }} /></TouchableOpacity>
+            </View> */}
+            <View style={styles.btnView}>
+                 <TouchableOpacity style={styles.addButton}>
+                 <MaterialIcons name="search" size={30} color="black" />
+            </TouchableOpacity>
             </View>
             <View style={{ backgroundColor: 'white', marginBottom: 25 }}>
                 <FlatList
@@ -112,9 +117,9 @@ export default function SubCategories2() {
                 />
 
                 <View style={styles.FilterOptions}>
-                    <TouchableOpacity style={{flexDirection:'row'}}><MaterialIcons name="filter-list" size={30} color="black" /><Text style={styles.filterText}>Filters</Text></TouchableOpacity>
+                    <TouchableOpacity style={{flexDirection:'row'}} onPress={() => navigation.navigate("Filter")}><MaterialIcons name="filter-list" size={30} color="black" /><Text style={styles.filterText}>Filters</Text></TouchableOpacity>
                     <TouchableOpacity style={{flexDirection:'row'}}><FontAwesome name="arrows-v" size={26} color="black" /><Text style={styles.filterText}>Price:lowest to high</Text></TouchableOpacity>
-                    <TouchableOpacity><FontAwesome name="th-list" size={26} color="black" /></TouchableOpacity>
+                    <TouchableOpacity ><FontAwesome name="th-list" size={26} color="black" /></TouchableOpacity>
                 </View>
             </View>
 
@@ -122,7 +127,7 @@ export default function SubCategories2() {
                 data={Data2}
                 numColumns={2}
                 columnWrapperStyle={{ justifyContent: 'space-between' }}
-                renderItem={({ item }) => <TouchableOpacity><ProductData v={item} /></TouchableOpacity>}
+                renderItem={({ item }) =><ProductData v={item} n={navigation} />}
                 keyExtractor={item => item.id}
             // horizontal={true}
             />
@@ -144,7 +149,7 @@ const styles = StyleSheet.create({
     ArrowView: {
         width: '100%',
         height: 80,
-        marginTop: 40,
+        // marginTop: 40,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
@@ -180,23 +185,26 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: '#F9F9F9',
-        marginBottom: verticalScale(20)
+        marginBottom: verticalScale(20),
+
     },
     filterText: {
         color: 'black',
         paddingRight: verticalScale(60),
         marginTop: 4,
-        marginLeft:10
+        // marginLeft:10
     },
     productMainView: {
-        width: 180,
+        width: 170,
         height: 350,
-        marginBottom:40
+        marginBottom:40,
+        
     },
     productImg: {
         width: '100%',
         height: '68%',
         position: 'relative',
+        
     },
     heart: {
         position: 'absolute',
@@ -205,7 +213,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 20,
         padding: 10,
-        
+
     },
     productText: {
         width: '100%',
@@ -242,6 +250,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 7,
         marginTop:4
     },
-
+    btnView:{
+        flexDirection:'row',
+        justifyContent:'flex-end'
+    },
+    addButton: {
+        paddingBottom:16
+    },
 
 })

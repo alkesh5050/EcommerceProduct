@@ -42,17 +42,17 @@ const data = [
   },
 ];
 
-export default function My_Bag() {
+export default function My_Bag({ route, navigation }) {
   const DataCity = ({ v }) => (
-    <TouchableOpacity>
-      <View style={{ paddingHorizontal: 26, marginVertical: 15 }}>
+    <TouchableOpacity >
+      <View style={{ paddingHorizontal: 26, marginVertical: 15 }} >
         <View style={Styles.img_main_view}>
-          <View>
+        <TouchableOpacity onPress={()=>navigation.navigate("ProductCard")}><View>
             <Image
               style={Styles.img}
               source={v.img}
             />
-          </View>
+          </View></TouchableOpacity>
           <View style={{ padding: 4, marginHorizontal: 10 }}>
             <View style={Styles.dotshead}>
               <Text
@@ -155,7 +155,7 @@ export default function My_Bag() {
         </View>
 
         <View style={Styles.checkoutBtn}>
-          <TouchableOpacity>
+          <TouchableOpacity  onPress={() => navigation.navigate("AddShipingAddress")}>
             <Text style={Styles.checkoutText}>Check out</Text>
           </TouchableOpacity>
         </View>

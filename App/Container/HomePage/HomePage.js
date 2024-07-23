@@ -95,7 +95,7 @@ const data11 = [
 // company.map(({ id, name }) => ({ companyId: id, companyName: name, companyId: id, companyName: name }));
 
 // console.log(company);
-export default function HomePage({route, navigation}) {
+export default function HomePage({ route, navigation }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -112,14 +112,13 @@ export default function HomePage({route, navigation}) {
   const ProductCard = ({ v }) => (
     // console.log(v)
     <TouchableOpacity style={styles.product} onPress={() => navigation.navigate("Product")}>
-      <Image style={styles.background1} source={v.image} />
+      <Image style={styles.background1} source={v.image}/>
       <View style={styles.iconview}>
         <FontAwesome name="star" size={20} color="#FFBA49" />
         <FontAwesome name="star" size={20} color="#FFBA49" />
         <FontAwesome name="star" size={20} color="#FFBA49" />
         <FontAwesome name="star" size={20} color="#FFBA49" />
         <FontAwesome name="star" size={20} color="#FFBA49" />
-
       </View>
 
       <Text style={styles.textDorothy}>{v.title}</Text>
@@ -186,10 +185,11 @@ export default function HomePage({route, navigation}) {
 
     <ScrollView style={styles.container}>
 
-      <StatusBar 
-      translucent={true} 
-      backgroundColor={'transparent'}
-       />
+      <StatusBar
+        animated={true}
+        backgroundColor="transparent"
+        // barStyle="dark-content"
+      />
       <View style={styles.background}>
         <ImageBackground style={styles.background} source={require('../../../assets/img/pexels-godisable-jacob-226636-896293.jpg')} />
         <View style={styles.textsale}>
@@ -197,7 +197,7 @@ export default function HomePage({route, navigation}) {
           <Text style={styles.sale}>Fashion Sale</Text>
 
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("CategoriesTwo")}>
             <Text style={{ fontSize: moderateScale(14), color: 'white', }}>Check</Text>
           </TouchableOpacity>
         </View>

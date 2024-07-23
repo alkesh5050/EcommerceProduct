@@ -26,6 +26,8 @@ import My_Orders from './App/Container/myorder/My_Orders';
 import My_Bag from './App/Container/mybag/My_Bag';
 import My_Profile from './App/Container/myprofile/My_Profile';
 import Success from './App/Container/Success/Success';
+import My_profilee from './App/Container/myorder/My_Orders';
+import My_Oeders from './App/Container/myprofile/My_Profile';
 
 
 export default function App() {
@@ -55,9 +57,9 @@ export default function App() {
       {/* <AddShipingAddress/> */}
       {/* <Favoritespage /> */}
       {/* <CategoriesTwo/> */}
-      {/* <My_Orders/> */}
+      {/* <My_profilee/> */}
       {/* <My_Bag/> */}
-      {/* <My_Profile/> */}
+      {/* <My_Oeders/> */}
       {/* <Success/> */}
     </Provider>
   )

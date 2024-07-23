@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import { horizontalScale, moderateScale, verticalScale } from '../../../assets/matrix/Metrics';
 
-export default function Success() {
+export default function Success({route, navigation}) {
   return (
     <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
@@ -31,7 +31,7 @@ export default function Success() {
 
       <View>
         <TouchableOpacity>
-          <Text style={Styles.continueShpBtn}>CONTINUE SHOPPING</Text>
+          <Text style={Styles.continueShpBtn} onPress={()=>navigation.navigate("Home")}>CONTINUE SHOPPING</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
