@@ -8,7 +8,7 @@ import Login from '../Container/Login/Login';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { FavoritesStack, HomeStack, My_BagStack, shopStack } from './StackNavigator';
+import { FavoritesStack, HomeStack, My_BagStack, My_ProfileStack, shopStack } from './StackNavigator';
 import SubCategories2 from '../Container/subcategory/SubCategories2';
 import My_Bag from '../Container/mybag/My_Bag';
 import My_Profile from '../Container/myprofile/My_Profile';
@@ -19,14 +19,36 @@ const Tab = createBottomTabNavigator();
 
 export default function Bottomtab() {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator 
+        screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+  
+              if (route.name === 'Home') {
+                iconName = focused
+                  ? 'home'
+                  : 'home-outline';
+              }else if (route.name === 'My_Bag') {
+                iconName = focused ? 'shopping-outline' : 'shopping';
+              }else if (route.name === 'shop') {
+                iconName = focused ? 'cart-outline' : 'cart';
+              }else if (route.name === 'Favoritesa') {
+                iconName = focused ? 'cards-heart-outline' : 'cards-heart';
+              }else if (route.name === 'My_Profile') {
+                iconName = focused ? 'account-circle-outline' : 'account-circle';
+              }
+  
+              return <MaterialCommunityIcons name={iconName} size={30} color={color} />;
+            },
+            tabBarActiveTintColor: 'tomato',
+            tabBarInactiveTintColor: 'gray',
+          })}
+        >
             <Tab.Screen
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Home ',
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome name="home" color={color} size={size} />
-                    )
+                   
                 }}
                 name="Home"
                 component={HomeStack} />
@@ -34,27 +56,18 @@ export default function Bottomtab() {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'My_Bag',
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome name="shopping-bag" color={color} size={size} />
-                    )
                 }}
                 name="My_Bag" component={My_BagStack} />
             <Tab.Screen
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Shop',
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome name="shopping-cart" color={color} size={size} />
-                    )
                 }}
                 name="shop" component={shopStack} />
             <Tab.Screen
                 options={{
                     headerShown: false,
                     tabBarLabel: 'favorite',
-                    tabBarIcon: ({ color, size }) => (
-                        <MaterialIcons name="favorite" color={color} size={size} />
-                    )
                 }}
                 name="Favoritesa" component={FavoritesStack}
 
@@ -63,11 +76,9 @@ export default function Bottomtab() {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'My_Profile',
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome name="user-circle" color={color} size={size} />
-                    )
+                  
                 }}
-                name="My_Profile" component={My_profilee} />
+                name="My_Profile" component={My_ProfileStack} />
             {/* <Tab.Screen name="SubCategories2" component={SubCategories2} /> */}
         </Tab.Navigator>
     )

@@ -11,39 +11,26 @@ import OrderDetails from '../Container/OrderDetails/OrderDetails';
 import Success from '../Container/Success/Success';
 import SubCategories2 from '../Container/subcategory/SubCategories2';
 import Filter from '../Container/filter/Filter';
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import My_profilee from '../Container/myorder/My_Orders';
+
 
 const Stack = createStackNavigator();
 
-function HomeBar({ navigation }) {
+function HeaderBarLeft({ navigation }) {
     return (
-
-        <View style={{
-            width: '100%',
-            backgroundColor: 'white',
-            flexDirection: 'row',
-            display: 'flex',
-            justifyContent: 'space-between'
-        }}>
-            <TouchableOpacity
-                onPress={() => navigation.goBack()}
-            ><MaterialIcons name="chevron-left" size={40} color="black" /></TouchableOpacity>
-            <View ><Text style={{
-              color:'black',
-              fontFamily: 'Metropolis-Bold',
-              color: '#222222',
-              fontSize: 18,
-              padding: 10,
-            }}>home</Text></View>
-            <TouchableOpacity style={{padding:10}}><FontAwesome name="search" size={22} color="black" /></TouchableOpacity>
-        </View>
-
-
-    );
+        <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            title="Cancel"
+            color="#fff"
+        ><MaterialIcons name="keyboard-arrow-left" size={40} color="black" />
+        </TouchableOpacity>
+    )
 }
+
 
 export const FavoritesStack = () => {
     return (
@@ -100,13 +87,25 @@ export const FavoritesStack = () => {
 
 export const HomeStack = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Screen  name="Home" component={HomePage}  options={({ navigation }) => ({
-                    headerTitle: () => <HomeBar navigation={navigation} /> })} />
+        <Stack.Navigator screenOptions={{
+            headerTitleAlign: 'center',
+            headerStyle: { backgroundColor: '#F8F9FA' },
+            headerTintColor: '#000',
+            headerTitleStyle: { fontWeight: 'bold' },
 
-            <Stack.Screen name="Product" component={ProductCard}  options={({ navigation }) => ({
-                    headerTitle: () => <HomeBar navigation={navigation} />})} />
-                    
+        }}>
+            <Stack.Screen name="Home" component={HomePage} />
+
+            <Stack.Screen
+                name="Product"
+                component={ProductCard}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+
+                })}
+            />
+
             <Stack.Screen name="My_Oeders" component={My_Oeders} />
             <Stack.Screen name="OrderDetails" component={OrderDetails} />
             <Stack.Screen name="CategoriesTwo" component={CategoriesTwo} />
@@ -118,9 +117,48 @@ export const HomeStack = () => {
 }
 export const My_BagStack = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="My_Bag" component={My_Bag} />
+        <Stack.Navigator screenOptions={{
+            headerTitleAlign: 'center',
+            headerStyle: { backgroundColor: '#F8F9FA' },
+            headerTintColor: '#000',
+            headerTitleStyle: { fontWeight: 'bold' },
 
+        }}>
+            <Stack.Screen
+                name="My Bag"
+                component={My_Bag}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+
+                })}
+            />
+            <Stack.Screen
+                name="AddShipingAddress"
+                component={AddShipingAddress}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+
+                })} />
+            <Stack.Screen 
+            name="ShippingAddresses" 
+            component={ShippingAddresses} 
+            options={({ navigation }) => ({
+                headerLeft: () =>
+                    <HeaderBarLeft navigation={navigation} />
+
+            })}
+            />
+            <Stack.Screen 
+            name="Success" 
+            component={Success}
+            options={({ navigation }) => ({
+                headerLeft: () =>
+                    <HeaderBarLeft navigation={navigation} />
+
+            })}
+             />
         </Stack.Navigator>
     )
 }
@@ -131,6 +169,15 @@ export const shopStack = () => {
             <Stack.Screen name="shop" component={SubCategories2} />
             <Stack.Screen name="Filter" component={Filter} />
             <Stack.Screen name="Product" component={ProductCard} />
+        </Stack.Navigator>
+    )
+}
+export const My_ProfileStack = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="My_profilee" component={My_profilee} />
+            <Stack.Screen name="OrderDetails" component={OrderDetails} />
+            <Stack.Screen name="ShippingAddresses" component={ShippingAddresses} />
         </Stack.Navigator>
     )
 }
