@@ -104,9 +104,9 @@ export default function SubCategories2({ route, navigation }) {
                 <TouchableOpacity><MaterialIcons name="search" size={30} color="black" style={{ marginTop: 25 }} /></TouchableOpacity>
             </View> */}
             <View style={styles.btnView}>
-                 <TouchableOpacity style={styles.addButton}>
+                 {/* <TouchableOpacity style={styles.addButton}>
                  <MaterialIcons name="search" size={30} color="black" />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             </View>
             <View style={{ backgroundColor: 'white', marginBottom: 25 }}>
                 <FlatList
@@ -252,7 +252,8 @@ const styles = StyleSheet.create({
     },
     btnView:{
         flexDirection:'row',
-        justifyContent:'flex-end'
+        justifyContent:'flex-end',
+        paddingTop:20
     },
     addButton: {
         paddingBottom:16

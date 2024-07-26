@@ -128,9 +128,9 @@ export default function My_Bag({ route, navigation }) {
         <StatusBar backgroundColor="transparent" barStyle="dark-content" />
 
         <View style={Styles.feather}>
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Feather name="search" size={25} color="#222222" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View>
           <Text style={Styles.bag}>My Bag</Text>

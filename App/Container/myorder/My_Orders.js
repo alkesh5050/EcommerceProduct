@@ -21,12 +21,12 @@ export default function My_profilee({ route, navigation }) {
 
       <View style={Styles.container}>
         <View style={Styles.search}>
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <EvilIcons name="search" size={32} color="#222222" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
-        <Text style={Styles.myProfile}>My Profile</Text>
+        {/* <Text style={Styles.myProfile}>My Profile</Text> */}
 
         <View style={Styles.profileHead}>
           <Image
@@ -112,10 +112,11 @@ export default function My_profilee({ route, navigation }) {
           </View>
 
           <View style={Styles.dataHead}>
-            <View>
+
+            <TouchableOpacity  onPress={() => navigation.navigate("Rating")}>
               <Text style={Styles.data1}>My reviews</Text>
               <Text style={Styles.data2}>Reviews for 4 items</Text>
-            </View>
+            </TouchableOpacity>
 
             <View>
               <TouchableOpacity>

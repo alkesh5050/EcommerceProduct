@@ -47,7 +47,7 @@ const Data = [
 ];
 
 const DataStructure = ({v,n}) => (
-  <TouchableOpacity>
+  <TouchableOpacity onPress={() => n.navigate("OrderDetails")}>
     <View style={Styles.orderDatamainBody}>
       <View style={{marginTop: 6}}>
         <View style={{flexDirection: 'row',justifyContent:'space-between'}}>
@@ -74,7 +74,7 @@ const DataStructure = ({v,n}) => (
 
         <View style={Styles.detailBtnHead}>
           <View style={Styles.detaildBtn}>
-            <TouchableOpacity onPress={() => n.navigate("OrderDetails")}>
+            <TouchableOpacity >
               <Text style={Styles.detaildBtnText}>Details</Text>
             </TouchableOpacity>
           </View>

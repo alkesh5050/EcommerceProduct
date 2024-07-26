@@ -132,10 +132,10 @@ export default function Favorites({route, navigation}) {
         backgroundColor="transparent"
         barStyle="dark-content"
       />
-      <TouchableOpacity style={{ paddingBottom: 25 }}>
+      {/* <TouchableOpacity style={{ paddingBottom: 25 }}>
 
         <Fontisto style={styles.FontAwesomeicon} name="search" size={22} color="black" />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <Text style={styles.fonts}></Text>
 
       <FlatList

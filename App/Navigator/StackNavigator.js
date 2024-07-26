@@ -16,6 +16,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import My_profilee from '../Container/myorder/My_Orders';
+import Rating from '../Container/rating/Rating';
 
 
 const Stack = createStackNavigator();
@@ -30,58 +31,15 @@ function HeaderBarLeft({ navigation }) {
         </TouchableOpacity>
     )
 }
-
-
-export const FavoritesStack = () => {
+function HeaderBarRight({ navigation }) {
     return (
-        <Stack.Navigator>
-            <Stack.Screen
-                options={{
-                    // title: 'My home',
-                    headerStyle: {
-                        backgroundColor: '#F5F5F5',
-                    },
-                    headerTintColor: 'black'
-                }}
-                name="Favourites" component={Favorites} />
-
-            <Stack.Screen
-                options={{
-                    title: 'My home',
-                    headerStyle: {
-                        backgroundColor: '#0BA3FF',
-                    },
-                    headerTintColor: 'white'
-                }}
-                name="Product" component={ProductCard} />
-            <Stack.Screen
-                options={{
-                    title: 'My CategoriesTwo',
-                    headerStyle: {
-                        backgroundColor: '#0BA3FF',
-                    },
-                    headerTintColor: 'white'
-                }}
-                name="CategoriesTwo" component={CategoriesTwo} />
-            <Stack.Screen
-                options={{
-                    title: 'My AddShipingAddress',
-                    headerStyle: {
-                        backgroundColor: '#0BA3FF',
-                    },
-                    headerTintColor: 'white'
-                }}
-                name="AddShipingAddress" component={AddShipingAddress} />
-            <Stack.Screen
-                options={{
-                    title: 'My ShippingAddresses',
-                    headerStyle: {
-                        backgroundColor: '#0BA3FF',
-                    },
-                    headerTintColor: 'white'
-                }}
-                name="ShippingAddresses" component={ShippingAddresses} />
-        </Stack.Navigator>
+        <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            title="Cancel"
+            color="#fff"
+            style={{ paddingRight: 17 }}
+        ><MaterialIcons name="search" size={30} color="black" />
+        </TouchableOpacity>
     )
 }
 
@@ -94,27 +52,51 @@ export const HomeStack = () => {
             headerTitleStyle: { fontWeight: 'bold' },
 
         }}>
-            <Stack.Screen name="Home" component={HomePage} />
+            <Stack.Screen
+                name="Home"
+                component={HomePage}
+                options={{ headerShown: false }}
+            />
 
             <Stack.Screen
                 name="Product"
                 component={ProductCard}
+
+                options={({ navigation }) => ({
+                    headerLeft: () => (
+                        <HeaderBarLeft navigation={navigation} />
+                    )
+                })}
+            />
+            <Stack.Screen
+                name="My_Bag"
+                component={My_Bag}
                 options={({ navigation }) => ({
                     headerLeft: () =>
                         <HeaderBarLeft navigation={navigation} />
-
                 })}
             />
-
-            <Stack.Screen name="My_Oeders" component={My_Oeders} />
-            <Stack.Screen name="OrderDetails" component={OrderDetails} />
+            {/* <Stack.Screen name="My_Oeders" component={My_Oeders} />
+            <Stack.Screen name="OrderDetails" component={OrderDetails} /> */}
             <Stack.Screen name="CategoriesTwo" component={CategoriesTwo} />
             <Stack.Screen name="AddShipingAddress" component={AddShipingAddress} />
             <Stack.Screen name="ShippingAddresses" component={ShippingAddresses} />
-            <Stack.Screen name="Success" component={Success} />
+            <Stack.Screen 
+            name="Success" 
+            component={Success} 
+            options={{
+                headerLeft: () => (null)
+            }} 
+            />
+            <Stack.Screen
+                name="Home1"
+                component={HomePage}
+
+            />
         </Stack.Navigator>
     )
 }
+
 export const My_BagStack = () => {
     return (
         <Stack.Navigator screenOptions={{
@@ -125,12 +107,16 @@ export const My_BagStack = () => {
 
         }}>
             <Stack.Screen
-                name="My Bag"
+                name="My_Bag"
                 component={My_Bag}
                 options={({ navigation }) => ({
-                    headerLeft: () =>
-                        <HeaderBarLeft navigation={navigation} />
+                    headerLeft: () => (
 
+                        <HeaderBarLeft navigation={navigation} />
+                    ),
+                    headerRight: () => (
+                        <HeaderBarRight navigation={navigation} />
+                    )
                 })}
             />
             <Stack.Screen
@@ -141,43 +127,188 @@ export const My_BagStack = () => {
                         <HeaderBarLeft navigation={navigation} />
 
                 })} />
-            <Stack.Screen 
-            name="ShippingAddresses" 
-            component={ShippingAddresses} 
-            options={({ navigation }) => ({
-                headerLeft: () =>
-                    <HeaderBarLeft navigation={navigation} />
-
-            })}
+            <Stack.Screen
+                name="ShippingAddresses"
+                component={ShippingAddresses}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
             />
-            <Stack.Screen 
-            name="Success" 
-            component={Success}
-            options={({ navigation }) => ({
-                headerLeft: () =>
-                    <HeaderBarLeft navigation={navigation} />
-
-            })}
-             />
+            <Stack.Screen
+                name="Success"
+                component={Success}
+                options={{
+                    headerLeft: () => (null)
+                }} 
+            />
         </Stack.Navigator>
     )
 }
 
 export const shopStack = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="shop" component={SubCategories2} />
-            <Stack.Screen name="Filter" component={Filter} />
-            <Stack.Screen name="Product" component={ProductCard} />
+        <Stack.Navigator screenOptions={{
+            headerTitleAlign: 'center',
+            headerStyle: { backgroundColor: '#F8F9FA' },
+            headerTintColor: '#000',
+            headerTitleStyle: { fontWeight: 'bold' },
+
+        }}>
+            <Stack.Screen
+                name="shop"
+                component={SubCategories2}
+                options={({ navigation }) => ({
+                    headerLeft: () => (
+                        <HeaderBarLeft navigation={navigation} />
+                    ),
+                    headerRight: () => (
+                        <HeaderBarRight navigation={navigation} />
+                    )
+                })}
+            />
+            <Stack.Screen
+                name="Filter"
+                component={Filter}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
+            />
+            <Stack.Screen
+                name="Product"
+                component={ProductCard}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
+            />
+            <Stack.Screen
+                name="My_Bag"
+                component={My_Bag}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
+            />
+            <Stack.Screen
+                name="AddShipingAddress"
+                component={AddShipingAddress}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
+            />
+            <Stack.Screen
+                name="ShippingAddresses"
+                component={ShippingAddresses}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
+            />
+            <Stack.Screen
+                name="Success"
+                component={Success}
+                options={{
+                    headerLeft: () => (null)
+                }} 
+            />
+            {/* <Stack.Screen name="My_Oeders" component={My_Oeders} />
+            <Stack.Screen name="OrderDetails" component={OrderDetails} />
+            <Stack.Screen name="CategoriesTwo" component={CategoriesTwo} /> */}
         </Stack.Navigator>
     )
 }
+
+export const FavoritesStack = () => {
+    return (
+        <Stack.Navigator screenOptions={{
+            headerTitleAlign: 'center',
+            headerStyle: { backgroundColor: '#F8F9FA' },
+            headerTintColor: '#000',
+            headerTitleStyle: { fontWeight: 'bold' },
+
+        }}>
+            <Stack.Screen
+                name="Favourites"
+                component={Favorites}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
+            />
+
+            <Stack.Screen
+                name="Product"
+                component={ProductCard}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
+            />
+            <Stack.Screen
+                name="My_Bag"
+                component={My_Bag}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
+            />
+            {/* <Stack.Screen   name="CategoriesTwo" component={CategoriesTwo} /> */}
+            <Stack.Screen
+                name="AddShipingAddress"
+                component={AddShipingAddress}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
+            />
+            <Stack.Screen
+                name="ShippingAddresses"
+                component={ShippingAddresses}
+                options={({ navigation }) => ({
+                    headerLeft: () =>
+                        <HeaderBarLeft navigation={navigation} />
+                })}
+            />
+            <Stack.Screen
+                name="Success"
+                component={Success}
+                options={{
+                    headerLeft: () => (null)
+                }} />
+        </Stack.Navigator>
+    )
+}
+
+
 export const My_ProfileStack = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="My_profilee" component={My_profilee} />
+        <Stack.Navigator screenOptions={{
+            headerTitleAlign: 'center',
+            headerStyle: { backgroundColor: '#F8F9FA' },
+            headerTintColor: '#000',
+            headerTitleStyle: { fontWeight: 'bold' },
+
+        }}>
+            <Stack.Screen
+                name="My_profile"
+                component={My_profilee}
+                options={({ navigation }) => ({
+                    headerLeft: () => (
+
+                        <HeaderBarLeft navigation={navigation} />
+                    ),
+                    headerRight: () => (
+                        <HeaderBarRight navigation={navigation} />
+                    )
+                })}
+            />
+            <Stack.Screen name="My_Oeders" component={My_Oeders} />
             <Stack.Screen name="OrderDetails" component={OrderDetails} />
             <Stack.Screen name="ShippingAddresses" component={ShippingAddresses} />
+            <Stack.Screen name="Rating" component={Rating} />
         </Stack.Navigator>
     )
 }

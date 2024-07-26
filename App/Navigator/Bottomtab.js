@@ -24,18 +24,18 @@ export default function Bottomtab() {
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
   
-              if (route.name === 'Home') {
+              if (route.name === 'HomeTab') {
                 iconName = focused
                   ? 'home'
                   : 'home-outline';
-              }else if (route.name === 'My_Bag') {
-                iconName = focused ? 'shopping-outline' : 'shopping';
-              }else if (route.name === 'shop') {
-                iconName = focused ? 'cart-outline' : 'cart';
-              }else if (route.name === 'Favoritesa') {
-                iconName = focused ? 'cards-heart-outline' : 'cards-heart';
-              }else if (route.name === 'My_Profile') {
-                iconName = focused ? 'account-circle-outline' : 'account-circle';
+              }else if (route.name === 'My_BagTab') {
+                iconName = focused ?  'shopping':'shopping-outline';
+              }else if (route.name === 'shopTab') {
+                iconName = focused ?  'cart':'cart-outline' ;
+              }else if (route.name === 'FavoritesaTab') {
+                iconName = focused ?  'cards-heart': 'cards-heart-outline';
+              }else if (route.name === 'My_ProfileTab') {
+                iconName = focused ? 'account-circle':'account-circle-outline';
               }
   
               return <MaterialCommunityIcons name={iconName} size={30} color={color} />;
@@ -50,26 +50,26 @@ export default function Bottomtab() {
                     tabBarLabel: 'Home ',
                    
                 }}
-                name="Home"
+                name="HomeTab"
                 component={HomeStack} />
             <Tab.Screen
                 options={{
                     headerShown: false,
                     tabBarLabel: 'My_Bag',
                 }}
-                name="My_Bag" component={My_BagStack} />
+                name="My_BagTab" component={My_BagStack} />
             <Tab.Screen
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Shop',
                 }}
-                name="shop" component={shopStack} />
+                name="shopTab" component={shopStack} />
             <Tab.Screen
                 options={{
                     headerShown: false,
                     tabBarLabel: 'favorite',
                 }}
-                name="Favoritesa" component={FavoritesStack}
+                name="FavoritesaTab" component={FavoritesStack}
 
             />
             <Tab.Screen
@@ -78,7 +78,7 @@ export default function Bottomtab() {
                     tabBarLabel: 'My_Profile',
                   
                 }}
-                name="My_Profile" component={My_ProfileStack} />
+                name="My_ProfileTab" component={My_ProfileStack} />
             {/* <Tab.Screen name="SubCategories2" component={SubCategories2} /> */}
         </Tab.Navigator>
     )
