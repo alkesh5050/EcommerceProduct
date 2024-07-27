@@ -112,7 +112,7 @@ export default function SubCategories2({ route, navigation }) {
                 <FlatList
                     data={data}
                     renderItem={({ item }) => <TouchableOpacity><ProductCard v={item} /></TouchableOpacity>}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.id.toString()}
                     horizontal={true}
                 />
 

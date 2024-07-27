@@ -33,7 +33,7 @@ const data = [
     price: 30,
   },
   {
-    id: 1,
+    id: 2,
     title: 'Sport Dress',
     color: 'Black',
     img: require('../../../assets/img/drress1.webp'),
@@ -139,7 +139,7 @@ export default function My_Bag({ route, navigation }) {
         <FlatList
           data={data}
           renderItem={({ item }) => <DataCity v={item} />}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.id.toString()}
         />
         <View style={{ marginLeft: 22, flexDirection: 'row', marginTop: 0 }}>
           <TextInput placeholder='Enter your promo code' style={Styles.inputdesign}>
